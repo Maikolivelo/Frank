@@ -5,11 +5,8 @@
     --text-dark: #18181b;         /* Light Black / Slate Charcoal for deep text definition */
     --text-muted: #71717a;        /* Soft neutral grey for descriptive content */
     --border-light: #e4e4e7;      /* Clean structural divider tint */
-    
-    /* Elegant Low Red / Warm Peach Spotlights */
     --accent-peach: #e07a63;      /* Muted artistic terracotta/low red tone */
     --accent-peach-dark: #c5634d; /* Deeper tone for active element hovers */
-    
     --font-studio: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -107,7 +104,7 @@ body {
     color: var(--text-dark);
 }
 
-/* --- Crisp High-Contrast Hero Framework --- */
+/* --- Hero Framework --- */
 .hero {
     padding: 160px 20px;
     text-align: center;
@@ -183,7 +180,7 @@ body {
     color: var(--accent-peach);
 }
 
-/* --- Fluid Continuous Gallery Row --- */
+/* --- Continuous Gallery Row --- */
 .gallery-section {
     padding: 80px 0; 
     background-color: var(--bg-white);
@@ -200,7 +197,6 @@ body {
     cursor: grab;               
 }
 
-/* Custom minimal scrollbar matching gallery colors */
 .horizontal-scroll-tray::-webkit-scrollbar {
     height: 4px;                
     display: block;             
@@ -225,7 +221,6 @@ body {
     cursor: grabbing;           
 }
 
-/* Card image presentation bounds */
 .scroll-img {
     flex: 0 0 220px;            
     height: 300px;              
@@ -287,14 +282,14 @@ body {
     color: var(--text-muted);
 }
 
-/* --- Contact & Social Channels --- */
+/* --- Contact & Social Channels Matrix --- */
 .contact-section {
     padding: 100px 0;
     background-color: var(--bg-white);
 }
 
 .contact-box {
-    max-width: 900px;
+    max-width: 1000px; 
     margin: 0 auto;
     text-align: center;
 }
@@ -313,36 +308,85 @@ body {
 
 .social-channels {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
-.channel-card {
+.channel-card-new {
     text-decoration: none;
-    padding: 24px;
-    text-align: left;
-    border: 1px solid var(--border-light);
     background-color: var(--bg-card);
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
 }
 
-.channel-card h3 {
+.channel-preview-box {
+    width: 100%;
+    height: 130px; 
+    padding: 10px; 
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.code-icon-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.whatsapp-large-icon {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 3rem;
+    color: #25D366;
+    transition: transform 0.25s ease;
+}
+
+.channel-info-new {
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.channel-info-new h3 {
     font-size: 1.05rem;
     font-weight: 600;
     margin-bottom: 6px;
     color: var(--text-dark);
 }
 
-.channel-card p {
+.channel-info-new p {
     font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.4;
 }
 
-.channel-card:hover {
+.channel-card-new:hover {
     border-color: var(--accent-peach);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(24, 24, 27, 0.05);
+}
+
+.channel-card-new:hover .whatsapp-large-icon {
+    transform: scale(1.05);
 }
 
 /* --- Clean Footer --- */
@@ -357,16 +401,44 @@ footer {
 
 /* --- Media Queries for All Devices --- */
 
-/* Tablets and Mid-Sized Screens (e.g., iPads) */
+/* Desktop & Large Tablets Adjustments */
 @media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
     .scroll-img {
         flex: 0 0 180px;        
         height: 250px;
     }
 }
 
-/* Mobile Devices (e.g., iPhones, Pixels, Galaxies) */
+/* Mobile Devices & Small Tablets */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 20px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links li {
+        margin: 0 15px;
+    }
+    .hero {
+        padding: 100px 20px;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
     .gallery-section {
         padding: 40px 0;        
     }
@@ -374,7 +446,13 @@ footer {
         gap: 8px;               
     }
     .scroll-img {
-        flex: 0 0 140px;        
+        flex: 0 0 145px;        
         height: 200px;          
+    }
+    .accreditations-section, .contact-section {
+        padding: 60px 0;
+    }
+    .social-channels {
+        grid-template-columns: 1fr; /* Stack social cards clearly into a vertical line on mobile phone displays */
     }
 }
