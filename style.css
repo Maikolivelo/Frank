@@ -1,0 +1,380 @@
+/* --- High-End Art Gallery Color Motif --- */
+:root {
+    --bg-white: #faf9f6;          /* Elegant bone-white gallery background */
+    --bg-card: #ffffff;           /* Clean crisp white inside layout cards */
+    --text-dark: #18181b;         /* Light Black / Slate Charcoal for deep text definition */
+    --text-muted: #71717a;        /* Soft neutral grey for descriptive content */
+    --border-light: #e4e4e7;      /* Clean structural divider tint */
+    
+    /* Elegant Low Red / Warm Peach Spotlights */
+    --accent-peach: #e07a63;      /* Muted artistic terracotta/low red tone */
+    --accent-peach-dark: #c5634d; /* Deeper tone for active element hovers */
+    
+    --font-studio: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* --- Base Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-studio);
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    letter-spacing: -0.1px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 5%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 6px;
+}
+
+/* --- Navigation Header --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5%;
+    background-color: rgba(250, 249, 246, 0.95);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+}
+
+.logo span {
+    color: var(--accent-peach);
+    font-weight: 300;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-dark);
+}
+
+/* --- Crisp High-Contrast Hero Framework --- */
+.hero {
+    padding: 160px 20px;
+    text-align: center;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.hero-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.tagline {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 32px;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--text-dark);
+    color: var(--bg-card);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-peach);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(24, 24, 27, 0.04);
+    border-color: var(--accent-peach);
+    color: var(--accent-peach);
+}
+
+/* --- Fluid Continuous Gallery Row --- */
+.gallery-section {
+    padding: 80px 0; 
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.horizontal-scroll-tray {
+    display: flex;
+    gap: 12px;                  
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 15px 0 25px 0;    
+    -webkit-overflow-scrolling: touch; 
+    cursor: grab;               
+}
+
+/* Custom minimal scrollbar matching gallery colors */
+.horizontal-scroll-tray::-webkit-scrollbar {
+    height: 4px;                
+    display: block;             
+}
+
+.horizontal-scroll-tray::-webkit-scrollbar-track {
+    background: var(--border-light);
+    border-radius: 10px;
+}
+
+.horizontal-scroll-tray::-webkit-scrollbar-thumb {
+    background: var(--text-muted); 
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.horizontal-scroll-tray::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-peach);   
+}
+
+.horizontal-scroll-tray:active {
+    cursor: grabbing;           
+}
+
+/* Card image presentation bounds */
+.scroll-img {
+    flex: 0 0 220px;            
+    height: 300px;              
+    object-fit: cover;          
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-card);
+    transition: all 0.25s ease-in-out;
+    user-select: none;          
+    -webkit-user-drag: none;
+}
+
+.scroll-img:hover {
+    border-color: var(--accent-peach);
+    transform: scale(1.02);     
+}
+
+/* --- Accreditations Layout --- */
+.accreditations-section {
+    padding: 100px 0;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.accreditation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.badge-card {
+    background-color: var(--bg-white);
+    padding: 40px 30px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.badge-card:hover {
+    border-color: var(--accent-peach);
+    background-color: #ffffff;
+}
+
+.badge-icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+.badge-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.badge-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* --- Contact & Social Channels --- */
+.contact-section {
+    padding: 100px 0;
+    background-color: var(--bg-white);
+}
+
+.contact-box {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-box h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.contact-box > p {
+    color: var(--text-muted);
+    max-width: 550px;
+    margin: 0 auto 60px auto;
+}
+
+.social-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.channel-card {
+    text-decoration: none;
+    padding: 24px;
+    text-align: left;
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-card);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.channel-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.channel-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.channel-card:hover {
+    border-color: var(--accent-peach);
+    transform: translateY(-2px);
+}
+
+/* --- Clean Footer --- */
+footer {
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-light);
+    background-color: var(--bg-white);
+}
+
+/* --- Media Queries for All Devices --- */
+
+/* Tablets and Mid-Sized Screens (e.g., iPads) */
+@media (max-width: 1024px) {
+    .scroll-img {
+        flex: 0 0 180px;        
+        height: 250px;
+    }
+}
+
+/* Mobile Devices (e.g., iPhones, Pixels, Galaxies) */
+@media (max-width: 768px) {
+    .gallery-section {
+        padding: 40px 0;        
+    }
+    .horizontal-scroll-tray {
+        gap: 8px;               
+    }
+    .scroll-img {
+        flex: 0 0 140px;        
+        height: 200px;          
+    }
+}
